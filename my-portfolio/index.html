@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yuwadi Dasuy (Syn) — IT student learning, building and experimenting with code." />
+  <title>Syn — Learning, Building & Experimenting</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#17171a',
+            muted: '#6f7078',
+            soft: '#f7f7f9',
+            accent: '#6865d8',
+            accentLight: '#eeedff'
+          },
+          boxShadow: {
+            soft: '0 12px 35px rgba(23, 23, 26, 0.07)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #5b58ca, #8c78e8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(104,101,216,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(104,101,216,.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+    .blob {
+      filter: blur(2px);
+      animation: float 6s ease-in-out infinite;
+    }
+    .blob-two { animation-delay: -2s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(4deg); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-shadow {
+      box-shadow: 0 8px 25px rgba(23, 23, 26, .05);
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .tag {
+      transition: transform .2s ease, background-color .2s ease;
+    }
+    .tag:hover {
+      transform: translateY(-2px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#fafafa] text-ink antialiased">
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-black/5">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="font-extrabold tracking-tight text-lg">Syn<span class="text-accent">.</span></a>
+
+      <div id="desktopMenu" class="hidden md:flex items-center gap-7 text-sm font-medium text-muted">
+        <a class="hover:text-ink transition" href="#home">Home</a>
+        <a class="hover:text-ink transition" href="#about">About</a>
+        <a class="hover:text-ink transition" href="#learning">Learning</a>
+        <a class="hover:text-ink transition" href="#projects">Projects</a>
+        <a class="hover:text-ink transition" href="#contact">Contact</a>
+      </div>
+
+      <button id="menuBtn"
+        class="md:hidden p-2 rounded-xl hover:bg-soft transition"
+        aria-label="Open menu"
+        aria-expanded="false">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-black/5 px-5 pb-4">
+      <div class="flex flex-col text-sm font-medium text-muted">
+        <a class="py-3 hover:text-ink" href="#home">Home</a>
+        <a class="py-3 hover:text-ink" href="#about">About</a>
+        <a class="py-3 hover:text-ink" href="#learning">Learning</a>
+        <a class="py-3 hover:text-ink" href="#projects">Projects</a>
+        <a class="py-3 hover:text-ink" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="home" class="relative min-h-screen pt-24 overflow-hidden hero-grid">
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-indigo-200/35 blob"></div>
+      <div class="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-purple-200/25 blob blob-two"></div>
+
+      <div class="relative max-w-6xl mx-auto px-5 sm:px-8 min-h-[calc(100vh-6rem)] flex items-center py-16">
+        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center w-full">
+
+          <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-black/5 shadow-sm text-xs font-semibold text-muted mb-6">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              IT / Computer Science Student
+            </div>
+
+            <p class="text-muted font-medium mb-3">Hello, my name is Yuwadi.</p>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[.98]">
+              Hi, I'm <span class="gradient-text">Syn</span> 👋
+            </h1>
+
+            <p class="mt-7 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl">
+              An IT student learning, building and experimenting with code.
+            </p>
+
+            <p class="mt-4 text-sm sm:text-base text-muted/90 max-w-xl leading-7">
+              I like turning random ideas into small projects and learning how technology can make them real.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" class="px-5 py-3 rounded-xl bg-ink text-white text-sm font-semibold hover:-translate-y-0.5 transition shadow-sm">
+                Explore My Projects
+              </a>
+              <a href="#about" class="px-5 py-3 rounded-xl bg-white border border-black/10 text-ink text-sm font-semibold hover:-translate-y-0.5 transition">
+                About Me
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+              <span>📍 Sripatum University</span>
+              <span>🌱 Still learning</span>
+            </div>
+          </div>
+
+          <div class="reveal flex justify-center lg:justify-end">
+            <div class="relative w-64 sm:w-72">
+              <div class="absolute -inset-5 rounded-[2rem] bg-indigo-100/60 rotate-3"></div>
+              <div class="relative bg-white rounded-[2rem] border border-black/5 shadow-soft p-4 -rotate-2">
+                <div class="aspect-square rounded-[1.5rem] bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center overflow-hidden">
+                  <img src="./about.jpg" alt="Yuwadi Dasuy" class="w-full h-full object-cover hidden" id="profileImage">
+                  <div id="profilePlaceholder" class="text-center px-5">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-white shadow-sm flex items-center justify-center text-4xl mb-4">👩🏻‍💻</div>
+                    <p class="font-bold text-lg">Syn</p>
+                    <p class="text-sm text-muted mt-1">learning by making</p>
+                  </div>
+                </div>
+                <div class="px-2 pt-4 flex items-center justify-between">
+                  <div>
+                    <p class="font-bold">Yuwadi Dasuy</p>
+                    <p class="text-xs text-muted mt-1">IT / CSI · SPU</p>
+                  </div>
+                  <span class="text-xl">✨</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 sm:py-28">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="reveal grid md:grid-cols-[.7fr_1.3fr] gap-10 items-start">
+          <div>
+            <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">A little about me</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">About Me</h2>
+          </div>
+          <div class="text-muted leading-8 text-base sm:text-lg">
+            <p>
+              Hi, I'm Syn, an IT student at Sripatum University. I'm interested in web development and programming.
+              I enjoy learning new technologies, building small projects, and turning random ideas into simple and useful websites.
+            </p>
+            <p class="mt-5">
+              I'm still learning and exploring different areas of technology, so this portfolio represents my learning journey
+              and the things I've tried along the way.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Journey -->
+    <section id="learning" class="py-24 sm:py-28 bg-white border-y border-black/5">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">Learning in progress</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">My Learning Journey 🌱</h2>
+          <p class="mt-4 text-muted leading-7">
+            I'm exploring different parts of technology one small project at a time.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+          <article class="reveal p-6 rounded-3xl bg-[#fafafa] border border-black/5 hover:shadow-soft transition">
+            <div class="text-2xl mb-5">🌐</div>
+            <h3 class="font-bold text-lg">Web Development</h3>
+            <p class="text-sm text-muted leading-6 mt-3">Learning how websites work and how to build interfaces with HTML, CSS and JavaScript.</p>
+          </article>
+
+          <article class="reveal p-6 rounded-3xl bg-[#fafafa] border border-black/5 hover:shadow-soft transition">
+            <div class="text-2xl mb-5">💻</div>
+            <h3 class="font-bold text-lg">Programming</h3>
+            <p class="text-sm text-muted leading-6 mt-3">Exploring JavaScript, Python and programming concepts through small projects.</p>
+          </article>
+
+          <article class="reveal p-6 rounded-3xl bg-[#fafafa] border border-black/5 hover:shadow-soft transition">
+            <div class="text-2xl mb-5">🗄️</div>
+            <h3 class="font-bold text-lg">Database</h3>
+            <p class="text-sm text-muted leading-6 mt-3">Learning how data is stored and managed using SQL and MySQL.</p>
+          </article>
+
+          <article class="reveal p-6 rounded-3xl bg-[#fafafa] border border-black/5 hover:shadow-soft transition">
+            <div class="text-2xl mb-5">🎨</div>
+            <h3 class="font-bold text-lg">UI / Design</h3>
+            <p class="text-sm text-muted leading-6 mt-3">Learning how to make interfaces simple, clear and easy to use.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Things I've Tried -->
+    <section class="py-24 sm:py-28">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="reveal text-center max-w-2xl mx-auto">
+          <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">Tools & technologies</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Things I've Tried 🧪</h2>
+          <p class="mt-4 text-muted leading-7">A collection of technologies I've learned, explored, or experimented with.</p>
+        </div>
+
+        <div class="reveal flex flex-wrap justify-center gap-3 mt-10">
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">HTML</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">CSS</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-accentLight text-accent text-sm font-semibold">JavaScript</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">React</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">Vue.js</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">Node.js</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">SQL</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">MySQL</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">Docker</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">Figma</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">Git</span>
+          <span class="tag px-4 py-2.5 rounded-full bg-white border border-black/10 text-sm font-semibold">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 sm:py-28 bg-white border-y border-black/5">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+          <div>
+            <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">Small things I've made</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Things I've Built 💡</h2>
+          </div>
+          <p class="text-sm text-muted max-w-sm leading-6">Projects don't have to be huge. Each one is a chance to learn something new.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6 mt-10">
+
+          <article class="project-card reveal bg-[#fafafa] rounded-3xl border border-black/5 overflow-hidden hover:shadow-soft">
+            <div class="h-48 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 flex items-center justify-center overflow-hidden">
+              <img src="./project1.jpg" alt="Couple Mission project" class="w-full h-full object-cover hidden project-image">
+              <div class="text-6xl project-placeholder">🎲💗</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl font-bold">Couple Mission 🎲</h3>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-pink-100 text-pink-700 font-semibold whitespace-nowrap">Fun project</span>
+              </div>
+              <p class="text-sm text-muted leading-6 mt-3">
+                A small web project that randomly generates activities and missions for couples. I made it as a fun project while practicing JavaScript, DOM manipulation and web design.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">HTML</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">CSS</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal bg-[#fafafa] rounded-3xl border border-black/5 overflow-hidden hover:shadow-soft">
+            <div class="h-48 bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50 flex items-center justify-center overflow-hidden">
+              <img src="./project2.jpg" alt="Car Maintenance Assistant project" class="w-full h-full object-cover hidden project-image">
+              <div class="text-6xl project-placeholder">🚗🔧</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl font-bold">Car Maintenance Assistant 🚗</h3>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 font-semibold whitespace-nowrap">In progress</span>
+              </div>
+              <p class="text-sm text-muted leading-6 mt-3">
+                A web application concept designed to help users track vehicle maintenance schedules, repair history, mileage and maintenance expenses.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">HTML</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">CSS</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">JavaScript</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">Database</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal bg-[#fafafa] rounded-3xl border border-black/5 overflow-hidden hover:shadow-soft">
+            <div class="h-48 bg-gradient-to-br from-indigo-50 via-violet-50 to-fuchsia-50 flex items-center justify-center overflow-hidden">
+              <img src="./project3.jpg" alt="Personal Portfolio project" class="w-full h-full object-cover hidden project-image">
+              <div class="text-6xl project-placeholder">🌐✨</div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl font-bold">Personal Portfolio 🌐</h3>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 font-semibold whitespace-nowrap">You're here!</span>
+              </div>
+              <p class="text-sm text-muted leading-6 mt-3">
+                A personal portfolio website created with AI-assisted development to showcase my profile, learning journey and projects.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">HTML</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">CSS</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">JavaScript</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-black/10">Tailwind CSS</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Currently Learning -->
+    <section class="py-24 sm:py-28">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="reveal grid md:grid-cols-[.8fr_1.2fr] gap-12">
+          <div>
+            <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">Next steps</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Currently Learning 📚</h2>
+            <p class="text-muted leading-7 mt-4">The list keeps changing as I discover new things.</p>
+          </div>
+
+          <div class="space-y-3">
+            <div class="reveal flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5">
+              <span class="w-9 h-9 rounded-xl bg-accentLight text-accent flex items-center justify-center font-bold">01</span>
+              <span class="font-semibold">JavaScript</span>
+            </div>
+            <div class="reveal flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5">
+              <span class="w-9 h-9 rounded-xl bg-accentLight text-accent flex items-center justify-center font-bold">02</span>
+              <span class="font-semibold">Backend Development</span>
+            </div>
+            <div class="reveal flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5">
+              <span class="w-9 h-9 rounded-xl bg-accentLight text-accent flex items-center justify-center font-bold">03</span>
+              <span class="font-semibold">APIs</span>
+            </div>
+            <div class="reveal flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5">
+              <span class="w-9 h-9 rounded-xl bg-accentLight text-accent flex items-center justify-center font-bold">04</span>
+              <span class="font-semibold">Database Design</span>
+            </div>
+            <div class="reveal flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/5">
+              <span class="w-9 h-9 rounded-xl bg-accentLight text-accent flex items-center justify-center font-bold">05</span>
+              <span class="font-semibold">Git & GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More About Me -->
+    <section class="py-24 sm:py-28 bg-[#17171a] text-white overflow-hidden relative">
+      <div class="absolute -top-32 -right-20 w-72 h-72 rounded-full bg-indigo-500/10 blur-3xl"></div>
+      <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="text-xs font-bold text-indigo-300 uppercase tracking-[.18em]">Beyond the code</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">A Little More About Me ✨</h2>
+          <p class="mt-5 text-white/65 leading-8">
+            When I'm not coding, I like listening to music, exploring random ideas, working on small projects,
+            and getting lost in my own thoughts.
+          </p>
+        </div>
+
+        <div class="reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-10">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">☕</div><p class="text-sm mt-3 text-white/80">Coffee / Cocoa</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">🎧</div><p class="text-sm mt-3 text-white/80">Music</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">💻</div><p class="text-sm mt-3 text-white/80">Coding</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">🎮</div><p class="text-sm mt-3 text-white/80">Games</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">🌙</div><p class="text-sm mt-3 text-white/80">Night owl</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div class="text-2xl">✨</div><p class="text-sm mt-3 text-white/80">Random ideas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 sm:py-28">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        <div class="reveal text-center rounded-[2rem] bg-accentLight border border-indigo-100 px-6 py-14 sm:px-12">
+          <p class="text-sm font-bold text-accent uppercase tracking-[.18em]">Say hello</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Let's Connect ✨</h2>
+          <p class="mt-5 text-muted leading-7 max-w-xl mx-auto">
+            Want to say hello or talk about a project? Feel free to connect.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-3 mt-8">
+            <!-- Replace # with your real links later. -->
+            <a href="#" data-placeholder-link="github" class="px-5 py-3 rounded-xl bg-ink text-white text-sm font-semibold hover:-translate-y-0.5 transition">
+              GitHub ↗
+            </a>
+            <a href="#" data-placeholder-link="linkedin" class="px-5 py-3 rounded-xl bg-white border border-black/10 text-ink text-sm font-semibold hover:-translate-y-0.5 transition">
+              LinkedIn ↗
+            </a>
+          </div>
+
+          <p class="text-xs text-muted/70 mt-5">Replace the placeholder links with your real profiles when you're ready.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/5 bg-white">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted">
+      <p>© 2026 Yuwadi Dasuy — Made with curiosity & code.</p>
+      <p>Built with HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Only use local images if they actually load.
+    function showLocalImage(img) {
+      img.addEventListener('load', () => {
+        img.classList.remove('hidden');
+        const placeholder = img.parentElement.querySelector('.project-placeholder');
+        if (placeholder) placeholder.classList.add('hidden');
+      });
+      img.addEventListener('error', () => {
+        img.classList.add('hidden');
+      });
+    }
+
+    const profileImage = document.getElementById('profileImage');
+    profileImage.addEventListener('load', () => {
+      profileImage.classList.remove('hidden');
+      document.getElementById('profilePlaceholder').classList.add('hidden');
+    });
+    profileImage.addEventListener('error', () => {
+      profileImage.classList.add('hidden');
+    });
+
+    document.querySelectorAll('.project-image').forEach(showLocalImage);
+
+    // Reveal-on-scroll
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('show'));
+    }
+
+    // Prevent placeholder social links from jumping to the top.
+    document.querySelectorAll('[data-placeholder-link]').forEach(link => {
+      link.addEventListener('click', (event) => {
+        if (link.getAttribute('href') === '#') {
+          event.preventDefault();
+          alert('Add your real social profile link here.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
